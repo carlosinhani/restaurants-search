@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import Slider from "react-slick";
 import TextField, { Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 
@@ -35,7 +34,7 @@ const Home = () => {
           </TextField>
           <CarouselTitle>Perto de Você</CarouselTitle>
           <Carousel { ...settings}>
-            < Card photo={restaurante} title="nome sei la" />
+            < Card photo={restaurante} title="oi" />
             < Card photo={restaurante} title="nome sei la" />
             < Card photo={restaurante} title="nome sei la" />
             < Card photo={restaurante} title="nome sei la" />
