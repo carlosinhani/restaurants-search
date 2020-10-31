@@ -4,9 +4,9 @@ import MaterialIcon from '@material/react-material-icon';
 
 import logo from '../../assets/logo.svg';
 import restaurante from '../../assets/restaurante-fake.png';
-import { Card, RestaurantCard, Modal } from '../../components';
+import { Card, RestaurantCard, Modal, Map } from '../../components';
 
-import { Container, Carousel, Search, Logo, Wrapper, Map, CarouselTitle } from './styles'
+import { Container, Carousel, Search, Logo, Wrapper, CarouselTitle } from './styles'
 
 const Home = () => {
   const [inputValue, setInpulValue] = useState('');
@@ -34,7 +34,7 @@ const Home = () => {
           </TextField>
           <CarouselTitle>Perto de Você</CarouselTitle>
           <Carousel { ...settings}>
-            < Card photo={restaurante} title="oi" />
+            < Card photo={restaurante} title="nome sei la" />
             < Card photo={restaurante} title="nome sei la" />
             < Card photo={restaurante} title="nome sei la" />
             < Card photo={restaurante} title="nome sei la" />
@@ -46,7 +46,7 @@ const Home = () => {
         <RestaurantCard />
       </Container>
       <Map />
-      <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} />
+      {/* <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} /> */}
     </Wrapper>
   );
 };
