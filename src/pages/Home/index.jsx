@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import TextField, { Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 
@@ -7,11 +8,13 @@ import restaurante from '../../assets/restaurante-fake.png';
 import { Card, RestaurantCard, Modal, Map } from '../../components';
 
 import { Container, Carousel, Search, Logo, Wrapper, CarouselTitle } from './styles'
+import { returnStatement } from '../../../../../../../AppData/Local/Microsoft/TypeScript/4.0/node_modules/@babel/types/lib/index';
 
 const Home = () => {
   const [inputValue, setInpulValue] = useState('');
   const [query, setQuery] = useState(null);
   const [modalOpened, setModalOpened] = useState(true);
+  const { restaurants } = useSelector((state) => state.restaurants);
 
   const settings = {
     dots: false,
@@ -45,16 +48,18 @@ const Home = () => {
           </TextField>
           <CarouselTitle>Perto de Você</CarouselTitle>
           <Carousel { ...settings}>
-            < Card photo={restaurante} title="nome sei la" />
-            < Card photo={restaurante} title="nome sei la" />
-            < Card photo={restaurante} title="nome sei la" />
-            < Card photo={restaurante} title="nome sei la" />
-            < Card photo={restaurante} title="nome sei la" />
-            < Card photo={restaurante} title="nome sei la" />
-            < Card photo={restaurante} title="nome sei la" />
+            {restaurants.map((restaurant) => (
+            <Card
+                Key={restaurant.place_id}
+                photo={restaurant.photo ? restaurant.photos[0].getUrl() : restaurante}
+                title={restaurant.name}
+              />
+            ))}
           </Carousel>
         </Search>
-        <RestaurantCard />
+        {restaurants.map((restaurant) => (
+           <RestaurantCard restaurant={restaurant} />
+        ))}
       </Container>
       <Map query={query} />
       {/* <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} /> */}
