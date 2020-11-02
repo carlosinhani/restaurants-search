@@ -38,6 +38,7 @@ export const Address = styled.span`
 `;
 
 export const ResturantPhoto = styled.img`
+  display: ${(props) => (props.imageLoaded ? 'block' : 'nome')};
   width: 100px;
   height: 100px;
   object-fit:cover;
